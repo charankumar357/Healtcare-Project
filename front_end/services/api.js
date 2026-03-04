@@ -47,8 +47,8 @@ export async function login(phone, password) {
   const token = await AsyncStorage.getItem('jwt_token'); // not needed here
   const res = await fetch(`${BASE_URL}/auth/login`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `username=${encodeURIComponent(phone)}&password=${encodeURIComponent(password)}`,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ phone, password }),
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data.detail || 'Login failed');
