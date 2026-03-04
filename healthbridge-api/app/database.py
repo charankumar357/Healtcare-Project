@@ -13,11 +13,24 @@ from sqlalchemy.orm import DeclarativeBase
 from app.config import settings
 
 
+# ─── Force asyncpg driver ───
+# Supabase / Neon connection strings use 'postgresql://' by default.
+# SQLAlchemy async engine REQUIRES 'postgresql+asyncpg://'.
+# We coerce the URL here so it works regardless of what's in the env var.
+def _get_async_db_url(url: str) -> str:
+    for prefix in ("postgresql://", "postgres://"):
+        if url.startswith(prefix):
+            return url.replace(prefix, "postgresql+asyncpg://", 1)
+    return url  # already has driver specified
+
+
+_db_url = _get_async_db_url(settings.database_url)
+
 # ─── Async Engine ───
 engine = create_async_engine(
-    settings.database_url,
+    _db_url,
     echo=settings.database_echo,
-    pool_size=20,
+    pool_size=5,
     max_overflow=10,
     pool_pre_ping=True,
     pool_recycle=3600,
