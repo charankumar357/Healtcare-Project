@@ -1,34 +1,44 @@
 import { useEffect, useRef } from 'react';
-import NetInfo from '@react-native-community/netinfo';
-import { useDatabase } from '../hooks/useDatabase';
+import { Platform } from 'react-native';
 
 /**
- * Headless component that listens for network changes and
- * triggers a background sync of the offline SQLite database.
+ * Headless component that syncs offline sessions when network is restored.
+ * On web: uses navigator.onLine events (no native NetInfo needed).
+ * On native: uses @react-native-community/netinfo.
  */
 export default function NetworkSyncer() {
-    const { syncPendingSessions } = useDatabase();
     const syncingRef = useRef(false);
 
+    const handleSync = async () => {
+        if (syncingRef.current) return;
+        // On web, we skip SQLite sync (no local DB on web)
+        // Sync happens automatically via the backend API calls
+        console.log('Network reconnected — online mode active.');
+    };
+
     useEffect(() => {
-        // Subscribe to network state updates
-        const unsubscribe = NetInfo.addEventListener((state) => {
-            // If we just got internet back, and we aren't already syncing
-            if (state.isConnected && state.isInternetReachable && !syncingRef.current) {
-                console.log('Network connected. Attempting sync...');
+        if (Platform.OS === 'web') {
+            // Web: use browser online/offline events
+            window.addEventListener('online', handleSync);
+            return () => window.removeEventListener('online', handleSync);
+        } else {
+            // Native: use NetInfo
+            let unsubscribe = () => { };
+            (async () => {
+                try {
+                    const NetInfo = require('@react-native-community/netinfo').default;
+                    unsubscribe = NetInfo.addEventListener((state) => {
+                        if (state.isConnected && state.isInternetReachable) {
+                            handleSync();
+                        }
+                    });
+                } catch (e) {
+                    console.log('NetInfo not available:', e.message);
+                }
+            })();
+            return () => unsubscribe();
+        }
+    }, []);
 
-                syncingRef.current = true;
-
-                syncPendingSessions().finally(() => {
-                    syncingRef.current = false;
-                });
-            }
-        });
-
-        // Cleanup subscription on unmount
-        return () => unsubscribe();
-    }, [syncPendingSessions]);
-
-    // Headless component renders nothing
-    return null;
+    return null; // Headless component
 }

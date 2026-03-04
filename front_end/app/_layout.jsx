@@ -1,12 +1,27 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { SQLiteProvider } from 'expo-sqlite';
-import { initDatabase } from '../hooks/useDatabase';
+import { Platform } from 'react-native';
 import NetworkSyncer from '../components/NetworkSyncer';
+
+// SQLiteProvider is native-only — skip on web to prevent blank page
+let SQLiteWrapper;
+if (Platform.OS !== 'web') {
+    // Dynamically require to avoid web bundler errors
+    const { SQLiteProvider } = require('expo-sqlite');
+    const { initDatabase } = require('../hooks/useDatabase');
+    SQLiteWrapper = ({ children }) => (
+        <SQLiteProvider databaseName="healthbridge.db" onInit={initDatabase}>
+            {children}
+        </SQLiteProvider>
+    );
+} else {
+    // On web, skip SQLite wrapper entirely
+    SQLiteWrapper = ({ children }) => <>{children}</>;
+}
 
 export default function RootLayout() {
     return (
-        <SQLiteProvider databaseName="healthbridge.db" onInit={initDatabase}>
+        <SQLiteWrapper>
             <StatusBar style="light" />
             <NetworkSyncer />
             <Stack
@@ -23,6 +38,6 @@ export default function RootLayout() {
                 <Stack.Screen name="(main)" options={{ headerShown: false }} />
                 <Stack.Screen name="(asha)" options={{ headerShown: false }} />
             </Stack>
-        </SQLiteProvider>
+        </SQLiteWrapper>
     );
 }
