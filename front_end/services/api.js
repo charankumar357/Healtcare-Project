@@ -9,7 +9,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // ─── Backend URL ───
-export const BASE_URL = 'https://healthbridge-api-bapt.onrender.com/';
+export const BASE_URL = 'https://healthbridge-api-bapt.onrender.com';
 
 // ─────────────────────────────────────────────
 // Internal helper: make authenticated requests

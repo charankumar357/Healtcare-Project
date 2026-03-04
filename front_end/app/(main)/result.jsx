@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { useRouter } from 'expo-router';
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
@@ -12,7 +13,30 @@ import { useStore } from '../../store/useStore';
 import AnimatedGauge from '../../components/AnimatedGauge';
 
 export default function ResultScreen() {
+    const router = useRouter ? useRouter() : null;
     const { language, currentAssessment } = useStore();
+
+    // Guard: no assessment yet (navigated directly to result page)
+    if (!currentAssessment) {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 32, backgroundColor: '#F4F6F8' }}>
+                <Text style={{ fontSize: 48, marginBottom: 16 }}>🩺</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1B4F72', marginBottom: 8, textAlign: 'center' }}>
+                    No Assessment Yet
+                </Text>
+                <Text style={{ fontSize: 15, color: '#7f8c8d', textAlign: 'center', marginBottom: 24 }}>
+                    Please go back and enter your symptoms first.
+                </Text>
+                <TouchableOpacity
+                    style={{ backgroundColor: '#1B4F72', paddingHorizontal: 28, paddingVertical: 14, borderRadius: 12 }}
+                    onPress={() => router?.replace('/(main)/symptom-input')}
+                >
+                    <Text style={{ color: '#fff', fontWeight: '700', fontSize: 16 }}>Enter Symptoms →</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
     const { score, tier, explanation } = currentAssessment;
 
     // System fonts used — Indic scripts render with device fonts

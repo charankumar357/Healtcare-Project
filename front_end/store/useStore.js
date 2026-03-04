@@ -41,44 +41,95 @@ export const useStore = create((set, get) => ({
 
     // ─── Screening Pipeline ───
     /**
+     * Local fallback scorer — used when API is unavailable (demo mode / no token).
+     * Simple rule-based scoring on keyword presence.
+     */
+    _localScore(symptomText) {
+        const text = symptomText.toLowerCase();
+
+        // Critical red-flag keywords
+        const critical = ['chest pain', 'cannot breathe', 'unconscious', 'seizure', 'stroke', 'heart attack', 'bleeding heavily'];
+        // High risk keywords
+        const high = ['difficulty breathing', 'breathless', 'severe', 'high fever', 'vomiting blood', 'fainting', 'swelling'];
+        // Moderate keywords
+        const moderate = ['fever', 'headache', 'cough', 'cold', 'body pain', 'weakness', 'dizziness', 'nausea', 'diarrhoea', 'vomiting'];
+
+        let score = 10;
+        if (critical.some(k => text.includes(k))) score = 90;
+        else if (high.some(k => text.includes(k))) score = 65;
+        else if (moderate.some(k => text.includes(k))) score = 40;
+
+        const tier =
+            score >= 80 ? 'critical' :
+                score >= 60 ? 'high' :
+                    score >= 35 ? 'moderate' : 'low';
+
+        const messages = {
+            critical: {
+                why: ['Critical symptoms detected — immediate emergency care needed'],
+                meaning: 'Your symptoms indicate a potentially life-threatening condition.',
+                whatToDo: '🚨 Call 108 immediately or go to the nearest emergency room.',
+            },
+            high: {
+                why: ['High-risk symptoms detected'],
+                meaning: 'Your symptoms suggest a serious condition that requires prompt medical attention.',
+                whatToDo: 'Visit a doctor or hospital today. Do not delay.',
+            },
+            moderate: {
+                why: ['Moderate symptoms identified: ' + moderate.filter(k => text.includes(k)).join(', ')],
+                meaning: 'Your symptoms indicate a moderate health concern.',
+                whatToDo: 'Consult a doctor within 24–48 hours. Rest and stay hydrated.',
+            },
+            low: {
+                why: ['Mild symptoms detected'],
+                meaning: 'Your symptoms appear mild at this time.',
+                whatToDo: 'Monitor your symptoms. If they worsen, consult a doctor.',
+            },
+        };
+
+        return {
+            score,
+            tier,
+            redFlag: tier === 'critical',
+            redFlagReason: tier === 'critical' ? 'Critical symptoms present' : null,
+            symptoms: moderate.filter(k => text.includes(k)).concat(high.filter(k => text.includes(k))),
+            explanation: { en: messages[tier], hi: messages[tier], te: messages[tier] },
+            recommendation: messages[tier].whatToDo,
+        };
+    },
+
+    /**
      * Full pipeline: extract → score → explain → recommend
-     * Returns { score, tier, explanation, recommendation } or throws
+     * Falls back to local scoring if API unavailable (demo mode / no token).
      */
     runScreening: async (symptomText, demographics) => {
         set({ isLoading: true, error: null });
         try {
             const lang = get().language;
 
-            // Step 1: Extract symptoms from text
-            const extractResult = await api.extractSymptoms(symptomText, lang);
-            const symptoms = extractResult.symptoms;
+            let assessment;
+            try {
+                // Try the real API first
+                const extractResult = await api.extractSymptoms(symptomText, lang);
+                const symptoms = extractResult.symptoms;
+                const scoreResult = await api.scoreRisk(symptoms, demographics);
+                const explainResult = await api.explainRisk(scoreResult.risk_score, scoreResult.risk_tier, lang);
+                const recResult = await api.getRecommendation(scoreResult.risk_tier, symptoms, lang);
 
-            // Step 2: Score risk
-            const scoreResult = await api.scoreRisk(symptoms, demographics);
-
-            // Step 3: Explanation in patient's language
-            const explainResult = await api.explainRisk(
-                scoreResult.risk_score,
-                scoreResult.risk_tier,
-                lang
-            );
-
-            // Step 4: Recommendation
-            const recResult = await api.getRecommendation(
-                scoreResult.risk_tier,
-                symptoms,
-                lang
-            );
-
-            const assessment = {
-                score: scoreResult.risk_score,
-                tier: scoreResult.risk_tier,
-                redFlag: scoreResult.red_flag_triggered,
-                redFlagReason: scoreResult.red_flag_reason,
-                symptoms,
-                explanation: explainResult,
-                recommendation: recResult,
-            };
+                assessment = {
+                    score: scoreResult.risk_score,
+                    tier: scoreResult.risk_tier,
+                    redFlag: scoreResult.red_flag_triggered,
+                    redFlagReason: scoreResult.red_flag_reason,
+                    symptoms,
+                    explanation: explainResult,
+                    recommendation: recResult,
+                };
+            } catch (apiError) {
+                // API failed → use local offline scoring engine
+                console.log('API unavailable, using local scoring:', apiError.message);
+                assessment = get()._localScore(symptomText);
+            }
 
             set({ currentAssessment: assessment, isLoading: false });
             return assessment;
