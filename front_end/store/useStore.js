@@ -116,13 +116,21 @@ export const useStore = create((set, get) => ({
                 const explainResult = await api.explainRisk(scoreResult.risk_score, scoreResult.risk_tier, lang);
                 const recResult = await api.getRecommendation(scoreResult.risk_tier, symptoms, lang);
 
+                // Format explanation to match what result.jsx expects
+                const formattedExplanation = {};
+                formattedExplanation[lang] = {
+                    why: explainResult.why_this_score || [],
+                    meaning: explainResult.what_it_means || '',
+                    whatToDo: explainResult.what_to_do_now || ''
+                };
+
                 assessment = {
                     score: scoreResult.risk_score,
                     tier: scoreResult.risk_tier,
                     redFlag: scoreResult.red_flag_triggered,
                     redFlagReason: scoreResult.red_flag_reason,
                     symptoms,
-                    explanation: explainResult,
+                    explanation: formattedExplanation,
                     recommendation: recResult,
                 };
             } catch (apiError) {
