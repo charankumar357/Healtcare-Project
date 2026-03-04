@@ -1,0 +1,240 @@
+import React, { useEffect } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { useFonts } from 'expo-font';
+import Animated, {
+    useSharedValue,
+    useAnimatedStyle,
+    withRepeat,
+    withSequence,
+    withTiming,
+} from 'react-native-reanimated';
+import Colors from '../../constants/Colors';
+import { useStore } from '../../store/useStore';
+import AnimatedGauge from '../../components/AnimatedGauge';
+
+export default function ResultScreen() {
+    const { language, currentAssessment } = useStore();
+    const { score, tier, explanation } = currentAssessment;
+
+    // Load custom fonts for Indic languages
+    const [fontsLoaded] = useFonts({
+        NotoSansDevanagari: require('../../assets/fonts/NotoSansDevanagari-Regular.ttf'),
+        NotoSansTelugu: require('../../assets/fonts/NotoSansTelugu-Regular.ttf'),
+        // Assumes fonts are added to assets folder. Fallback system fonts will be used if missing.
+    });
+
+    // Pulse animation for the tier badge
+    const pulseOpacity = useSharedValue(0.4);
+
+    useEffect(() => {
+        pulseOpacity.value = withRepeat(
+            withSequence(
+                withTiming(1, { duration: 800 }),
+                withTiming(0.4, { duration: 800 })
+            ),
+            -1,
+            true
+        );
+    }, []);
+
+    const animatedBadgeStyle = useAnimatedStyle(() => ({
+        borderColor: getTierColor(tier),
+        backgroundColor: getTierColor(tier) + '15',
+        opacity: pulseOpacity.value,
+    }));
+
+    const getTierColor = (t) => {
+        switch (t) {
+            case 'low': return Colors.low;
+            case 'moderate': return Colors.moderate;
+            case 'high': return Colors.high;
+            case 'critical': return Colors.critical;
+            default: return Colors.primary;
+        }
+    };
+
+    const getFontFamily = () => {
+        if (!fontsLoaded) return undefined;
+        if (language === 'hi') return 'NotoSansDevanagari';
+        if (language === 'te') return 'NotoSansTelugu';
+        return undefined; // System default for English
+    };
+
+    const currentStrings = explanation[language] || explanation['en'];
+    const activeColor = getTierColor(tier);
+    const fontFamily = getFontFamily();
+
+    return (
+        <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+
+            {/* Animated Gauge */}
+            <View style={styles.gaugeSection}>
+                <AnimatedGauge score={score} tier={tier} />
+
+                {/* Tier Badge */}
+                <Animated.View style={[styles.badge, animatedBadgeStyle]}>
+                    <Text style={[styles.badgeText, { color: activeColor }]}>
+                        {tier.toUpperCase()} RISK
+                    </Text>
+                </Animated.View>
+            </View>
+
+            {/* Flashing Emergency Banner if critical */}
+            {tier === 'critical' && (
+                <Animated.View style={[styles.emergencyBanner, { opacity: pulseOpacity }]}>
+                    <Text style={styles.emergencyText}>⚠️ EMERGENCY — CALL 108 NOW</Text>
+                </Animated.View>
+            )}
+
+            {/* Explanation Cards */}
+            <View style={styles.card}>
+                <Text style={styles.cardHeader}>Why this score?</Text>
+                {currentStrings.why.map((point, index) => (
+                    <View key={index} style={styles.bulletRow}>
+                        <Text style={[styles.bulletPoint, { color: activeColor }]}>•</Text>
+                        <Text style={[styles.cardText, { fontFamily }]}>{point}</Text>
+                    </View>
+                ))}
+            </View>
+
+            <View style={styles.card}>
+                <Text style={styles.cardHeader}>What does this mean?</Text>
+                <Text style={[styles.cardText, { fontFamily }]}>{currentStrings.meaning}</Text>
+            </View>
+
+            <View style={[styles.card, { borderLeftColor: activeColor, borderLeftWidth: 4 }]}>
+                <Text style={styles.cardHeader}>What to do now?</Text>
+                <Text style={[styles.highlightText, { fontFamily }]}>{currentStrings.whatToDo}</Text>
+            </View>
+
+            {/* CTA Buttons */}
+            <View style={styles.actionContainer}>
+                <TouchableOpacity style={[styles.primaryButton, { backgroundColor: activeColor }]}>
+                    <Text style={styles.primaryButtonText}>See Recommendation</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[styles.secondaryButton, { borderColor: activeColor }]}>
+                    <Text style={[styles.secondaryButtonText, { color: activeColor }]}>Download Report</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.tertiaryButton}>
+                    <Text style={styles.tertiaryButtonText}>Start New Screening</Text>
+                </TouchableOpacity>
+            </View>
+
+        </ScrollView>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: Colors.background,
+    },
+    content: {
+        padding: 20,
+        paddingBottom: 40,
+    },
+    gaugeSection: {
+        alignItems: 'center',
+        marginBottom: 32,
+    },
+    badge: {
+        marginTop: 24,
+        paddingHorizontal: 24,
+        paddingVertical: 8,
+        borderRadius: 20,
+        borderWidth: 2,
+    },
+    badgeText: {
+        fontSize: 16,
+        fontWeight: '800',
+        letterSpacing: 1,
+    },
+    emergencyBanner: {
+        backgroundColor: Colors.critical,
+        padding: 16,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginBottom: 24,
+    },
+    emergencyText: {
+        color: Colors.white,
+        fontWeight: 'bold',
+        fontSize: 16,
+    },
+    card: {
+        backgroundColor: Colors.white,
+        borderRadius: 12,
+        padding: 20,
+        marginBottom: 16,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.05,
+        shadowRadius: 8,
+        elevation: 2,
+    },
+    cardHeader: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: Colors.textPrimary,
+        marginBottom: 12,
+    },
+    bulletRow: {
+        flexDirection: 'row',
+        marginBottom: 8,
+        alignItems: 'flex-start',
+    },
+    bulletPoint: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginRight: 8,
+        lineHeight: 22,
+    },
+    cardText: {
+        fontSize: 15,
+        lineHeight: 24,
+        color: Colors.textSecondary,
+        flex: 1,
+    },
+    highlightText: {
+        fontSize: 16,
+        fontWeight: '700',
+        lineHeight: 24,
+        color: Colors.textPrimary,
+    },
+    actionContainer: {
+        marginTop: 16,
+        gap: 12,
+    },
+    primaryButton: {
+        padding: 16,
+        borderRadius: 12,
+        alignItems: 'center',
+    },
+    primaryButtonText: {
+        color: Colors.white,
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    secondaryButton: {
+        padding: 16,
+        borderRadius: 12,
+        alignItems: 'center',
+        borderWidth: 1,
+        backgroundColor: 'transparent',
+    },
+    secondaryButtonText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    tertiaryButton: {
+        padding: 16,
+        alignItems: 'center',
+    },
+    tertiaryButtonText: {
+        color: Colors.textSecondary,
+        fontSize: 16,
+        fontWeight: '600',
+    },
+});

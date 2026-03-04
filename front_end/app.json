@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "HealthBridge",
+    "slug": "healthbridge",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1B4F72"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.healthbridge.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1B4F72"
+      },
+      "package": "com.healthbridge.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "scheme": "healthbridge",
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
