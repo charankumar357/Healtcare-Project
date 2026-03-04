@@ -1,13 +1,6 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Animated } from 'react-native';
 import { useRouter } from 'expo-router';
-import Animated, {
-    useSharedValue,
-    useAnimatedStyle,
-    withRepeat,
-    withSequence,
-    withTiming,
-} from 'react-native-reanimated';
 import Colors from '../../constants/Colors';
 import { useStore } from '../../store/useStore';
 import AnimatedGauge from '../../components/AnimatedGauge';
@@ -42,24 +35,24 @@ export default function ResultScreen() {
     // System fonts used — Indic scripts render with device fonts
 
     // Pulse animation for the tier badge
-    const pulseOpacity = useSharedValue(0.4);
+    const pulseOpacity = useRef(new Animated.Value(0.4)).current;
 
     useEffect(() => {
-        pulseOpacity.value = withRepeat(
-            withSequence(
-                withTiming(1, { duration: 800 }),
-                withTiming(0.4, { duration: 800 })
-            ),
-            -1,
-            true
-        );
-    }, []);
-
-    const animatedBadgeStyle = useAnimatedStyle(() => ({
-        borderColor: getTierColor(tier),
-        backgroundColor: getTierColor(tier) + '15',
-        opacity: pulseOpacity.value,
-    }));
+        Animated.loop(
+            Animated.sequence([
+                Animated.timing(pulseOpacity, {
+                    toValue: 1,
+                    duration: 800,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(pulseOpacity, {
+                    toValue: 0.4,
+                    duration: 800,
+                    useNativeDriver: true,
+                })
+            ])
+        ).start();
+    }, [pulseOpacity]);
 
     const getTierColor = (t) => {
         switch (t) {
@@ -86,7 +79,11 @@ export default function ResultScreen() {
                 <AnimatedGauge score={score} tier={tier} />
 
                 {/* Tier Badge */}
-                <Animated.View style={[styles.badge, animatedBadgeStyle]}>
+                <Animated.View style={[styles.badge, {
+                    borderColor: activeColor,
+                    backgroundColor: activeColor + '15',
+                    opacity: pulseOpacity,
+                }]}>
                     <Text style={[styles.badgeText, { color: activeColor }]}>
                         {tier.toUpperCase()} RISK
                     </Text>
