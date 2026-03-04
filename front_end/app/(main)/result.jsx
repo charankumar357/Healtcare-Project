@@ -120,15 +120,24 @@ export default function ResultScreen() {
 
             {/* CTA Buttons */}
             <View style={styles.actionContainer}>
-                <TouchableOpacity style={[styles.primaryButton, { backgroundColor: activeColor }]}>
+                <TouchableOpacity
+                    style={[styles.primaryButton, { backgroundColor: activeColor }]}
+                    onPress={() => router?.push('/(main)/recommendation')}
+                >
                     <Text style={styles.primaryButtonText}>See Recommendation</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.secondaryButton, { borderColor: activeColor }]}>
+                <TouchableOpacity
+                    style={[styles.secondaryButton, { borderColor: activeColor }]}
+                    onPress={() => router?.push('/(main)/report')}
+                >
                     <Text style={[styles.secondaryButtonText, { color: activeColor }]}>Download Report</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.tertiaryButton}>
+                <TouchableOpacity
+                    style={styles.tertiaryButton}
+                    onPress={() => router?.replace('/(main)/symptom-input')}
+                >
                     <Text style={styles.tertiaryButtonText}>Start New Screening</Text>
                 </TouchableOpacity>
             </View>
