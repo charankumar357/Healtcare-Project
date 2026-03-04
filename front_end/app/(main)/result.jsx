@@ -103,7 +103,7 @@ export default function ResultScreen() {
             {/* Explanation Cards */}
             <View style={styles.card}>
                 <Text style={styles.cardHeader}>Why this score?</Text>
-                {currentStrings.why.map((point, index) => (
+                {(currentStrings?.why || []).map((point, index) => (
                     <View key={index} style={styles.bulletRow}>
                         <Text style={[styles.bulletPoint, { color: activeColor }]}>•</Text>
                         <Text style={[styles.cardText, { fontFamily }]}>{point}</Text>
@@ -113,12 +113,12 @@ export default function ResultScreen() {
 
             <View style={styles.card}>
                 <Text style={styles.cardHeader}>What does this mean?</Text>
-                <Text style={[styles.cardText, { fontFamily }]}>{currentStrings.meaning}</Text>
+                <Text style={[styles.cardText, { fontFamily }]}>{currentStrings?.meaning || 'No meaning provided.'}</Text>
             </View>
 
             <View style={[styles.card, { borderLeftColor: activeColor, borderLeftWidth: 4 }]}>
                 <Text style={styles.cardHeader}>What to do now?</Text>
-                <Text style={[styles.highlightText, { fontFamily }]}>{currentStrings.whatToDo}</Text>
+                <Text style={[styles.highlightText, { fontFamily }]}>{currentStrings?.whatToDo || 'No recommendation provided.'}</Text>
             </View>
 
             {/* CTA Buttons */}
