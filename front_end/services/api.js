@@ -8,8 +8,8 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// ─── CHANGE THIS to your deployed Render URL after deployment ───
-export const BASE_URL = 'http://192.168.1.100:8000'; // ← update with your IP/URL
+// ─── Backend URL ───
+export const BASE_URL = 'https://healthbridge-api.onrender.com';
 
 // ─────────────────────────────────────────────
 // Internal helper: make authenticated requests
