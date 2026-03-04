@@ -3,13 +3,13 @@
  * All backend calls go through this file.
  *
  * LOCAL DEV:  BASE_URL = 'http://192.168.x.x:8000'  (your PC's IP on LAN)
- * PRODUCTION: BASE_URL = 'https://healthbridge-api.onrender.com'
+ * PRODUCTION: BASE_URL = 'https://healthbridge-api-bapt.onrender.com/'
  */
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // ─── Backend URL ───
-export const BASE_URL = 'https://healthbridge-api.onrender.com';
+export const BASE_URL = 'https://healthbridge-api-bapt.onrender.com/';
 
 // ─────────────────────────────────────────────
 // Internal helper: make authenticated requests

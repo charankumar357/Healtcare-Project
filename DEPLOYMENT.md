@@ -118,20 +118,20 @@ services:
 
 6. Click **Create Web Service**
 7. Wait 3-5 minutes for build + deploy
-8. Your API will be live at: `https://healthbridge-api.onrender.com`
+8. Your API will be live at: `https://healthbridge-api-bapt.onrender.com`
 
 ### 3c. Verify Deployment
 
 Open in browser:
 ```
-https://healthbridge-api.onrender.com/health
+https://healthbridge-api-bapt.onrender.com/health
 ```
 You should see:
 ```json
 {"status": "ok", "db": "connected", "version": "1.0.0"}
 ```
 
-API docs at: `https://healthbridge-api.onrender.com/docs`
+API docs at: `https://healthbridge-api-bapt.onrender.com/docs`
 
 ---
 
@@ -145,7 +145,7 @@ npx expo start
 
 Update the API base URL in your frontend code to point to your Render deployment:
 ```
-https://healthbridge-api.onrender.com
+https://healthbridge-api-bapt.onrender.com
 ```
 
 ---
