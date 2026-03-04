@@ -29,7 +29,7 @@ export default function SymptomInputScreen() {
         }
         try {
             await runScreening(symptomText, DEFAULT_DEMOGRAPHICS);
-            router.push('/(main)/result');
+            router.push('/result');
         } catch (e) {
             Alert.alert('Error', e.message || 'Failed to analyse symptoms. Please try again.');
         }

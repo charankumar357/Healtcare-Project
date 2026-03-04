@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import Animated, {
     useSharedValue,
@@ -42,7 +42,31 @@ export default function AnimatedGauge({ score, tier }) {
 
     const activeColor = getTierColor(tier);
 
-    // Animate the strokeDashoffset to draw the arc
+    // On Web, Reanimated useAnimatedProps with SVG often crashes the render,
+    // which aborts the router navigation silently.
+    if (Platform.OS === 'web') {
+        const staticDashoffset = CIRCUMFERENCE - (score / 100) * CIRCUMFERENCE;
+        return (
+            <View style={styles.container}>
+                <Svg width={RADIUS * 2 + STROKE_WIDTH} height={RADIUS + STROKE_WIDTH} viewBox={`0 0 ${RADIUS * 2 + STROKE_WIDTH} ${RADIUS + STROKE_WIDTH / 2}`}>
+                    <Path
+                        d={`M ${STROKE_WIDTH / 2} ${RADIUS + STROKE_WIDTH / 2} A ${RADIUS} ${RADIUS} 0 0 1 ${RADIUS * 2 + STROKE_WIDTH / 2} ${RADIUS + STROKE_WIDTH / 2}`}
+                        stroke={Colors.border} strokeWidth={STROKE_WIDTH} strokeLinecap="round" fill="none"
+                    />
+                    <Path
+                        d={`M ${STROKE_WIDTH / 2} ${RADIUS + STROKE_WIDTH / 2} A ${RADIUS} ${RADIUS} 0 0 1 ${RADIUS * 2 + STROKE_WIDTH / 2} ${RADIUS + STROKE_WIDTH / 2}`}
+                        stroke={activeColor} strokeWidth={STROKE_WIDTH} strokeLinecap="round" fill="none"
+                        strokeDasharray={CIRCUMFERENCE} strokeDashoffset={staticDashoffset}
+                    />
+                </Svg>
+                <View style={styles.scoreContainer}>
+                    <Text style={[styles.scoreText, { color: activeColor }]}>{score}</Text>
+                </View>
+            </View>
+        );
+    }
+
+    // Native: Animate the strokeDashoffset to draw the arc
     const animatedProps = useAnimatedProps(() => {
         const dashoffset = CIRCUMFERENCE - progress.value * CIRCUMFERENCE;
         return {
