@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { useFonts } from 'expo-font';
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
@@ -16,12 +15,7 @@ export default function ResultScreen() {
     const { language, currentAssessment } = useStore();
     const { score, tier, explanation } = currentAssessment;
 
-    // Load custom fonts for Indic languages
-    const [fontsLoaded] = useFonts({
-        NotoSansDevanagari: require('../../assets/fonts/NotoSansDevanagari-Regular.ttf'),
-        NotoSansTelugu: require('../../assets/fonts/NotoSansTelugu-Regular.ttf'),
-        // Assumes fonts are added to assets folder. Fallback system fonts will be used if missing.
-    });
+    // System fonts used — Indic scripts render with device fonts
 
     // Pulse animation for the tier badge
     const pulseOpacity = useSharedValue(0.4);
@@ -53,12 +47,8 @@ export default function ResultScreen() {
         }
     };
 
-    const getFontFamily = () => {
-        if (!fontsLoaded) return undefined;
-        if (language === 'hi') return 'NotoSansDevanagari';
-        if (language === 'te') return 'NotoSansTelugu';
-        return undefined; // System default for English
-    };
+    // Use system font — device handles Devanagari/Telugu rendering
+    const getFontFamily = () => undefined;
 
     const currentStrings = explanation[language] || explanation['en'];
     const activeColor = getTierColor(tier);
