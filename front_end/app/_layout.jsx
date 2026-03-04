@@ -6,7 +6,6 @@ import NetworkSyncer from '../components/NetworkSyncer';
 // SQLiteProvider is native-only — skip on web to prevent blank page
 let SQLiteWrapper;
 if (Platform.OS !== 'web') {
-    // Dynamically require to avoid web bundler errors
     const { SQLiteProvider } = require('expo-sqlite');
     const { initDatabase } = require('../hooks/useDatabase');
     SQLiteWrapper = ({ children }) => (
@@ -15,7 +14,6 @@ if (Platform.OS !== 'web') {
         </SQLiteProvider>
     );
 } else {
-    // On web, skip SQLite wrapper entirely
     SQLiteWrapper = ({ children }) => <>{children}</>;
 }
 
@@ -36,7 +34,7 @@ export default function RootLayout() {
                 <Stack.Screen name="(auth)" options={{ headerShown: false }} />
                 <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
                 <Stack.Screen name="(main)" options={{ headerShown: false }} />
-                <Stack.Screen name="(asha)" options={{ headerShown: false }} />
+                {/* (asha) screens removed — patient-only app */}
             </Stack>
         </SQLiteWrapper>
     );
