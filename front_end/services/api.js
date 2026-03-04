@@ -138,9 +138,12 @@ export async function transcribeAudio(audioFile) {
   const formData = new FormData();
   formData.append('audio', { uri: audioFile.uri, name: audioFile.name || 'recording.m4a', type: audioFile.type || 'audio/m4a' });
 
+  const headers = {};
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+
   const res = await fetch(`${BASE_URL}/audio/transcribe`, {
     method: 'POST',
-    headers: { Authorization: `Bearer ${token}` },
+    headers,
     body: formData,
   });
   const data = await res.json();

@@ -106,8 +106,8 @@ export const useStore = create((set, get) => ({
         set({ isLoading: true, error: null });
         try {
             const lang = get().language;
-
             let assessment;
+
             try {
                 // Try the real API first
                 const extractResult = await api.extractSymptoms(symptomText, lang);
@@ -126,7 +126,7 @@ export const useStore = create((set, get) => ({
                     recommendation: recResult,
                 };
             } catch (apiError) {
-                // API failed → use local offline scoring engine
+                // API failed (e.g. 401 Unauthorized in Demo Mode, or Network Error)
                 console.log('API unavailable, using local scoring:', apiError.message);
                 assessment = get()._localScore(symptomText);
             }
@@ -134,6 +134,8 @@ export const useStore = create((set, get) => ({
             set({ currentAssessment: assessment, isLoading: false });
             return assessment;
         } catch (e) {
+            // Only catch catastrophic non-API errors here
+            console.error('Screening pipeline failed:', e);
             set({ error: e.message, isLoading: false });
             throw e;
         }
