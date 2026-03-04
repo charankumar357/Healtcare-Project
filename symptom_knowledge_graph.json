@@ -1,0 +1,3888 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "description": "Symptom Knowledge Graph for Rural Health Pre-Screening System - India",
+    "total_symptoms": 105,
+    "body_systems": [
+      "respiratory",
+      "systemic",
+      "gastrointestinal",
+      "cardiovascular",
+      "neurological",
+      "musculoskeletal",
+      "dermatological",
+      "reproductive",
+      "ophthalmological",
+      "ent"
+    ],
+    "languages_supported": [
+      "hi",
+      "te",
+      "ta",
+      "en"
+    ],
+    "base_weight_range": "1-20 (20 = most severe in isolation)",
+    "guidelines_reference": "WHO Emergency Triage Assessment and Treatment (ETAT)",
+    "created_for": "Task M3-01 — Hackathon Healthcare Project"
+  },
+  "symptoms": {
+    "cough": {
+      "base_weight": 5,
+      "body_system": "respiratory",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "cough+blood_in_sputum",
+        "cough+weight_loss+night_sweats"
+      ],
+      "common_names": {
+        "hi": [
+          "khansi",
+          "khasi"
+        ],
+        "te": [
+          "daggu",
+          "dabbhu"
+        ],
+        "ta": [
+          "irumal"
+        ],
+        "en": [
+          "cough",
+          "coughing"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "shortness_of_breath": {
+      "base_weight": 14,
+      "body_system": "respiratory",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "shortness_of_breath+chest_pain",
+        "shortness_of_breath+fever"
+      ],
+      "common_names": {
+        "hi": [
+          "saans phoolna",
+          "saans lene mein takleef"
+        ],
+        "te": [
+          "uppiri",
+          "swasa istam"
+        ],
+        "ta": [
+          "moochu vaangu",
+          "moochu thinaural"
+        ],
+        "en": [
+          "shortness of breath",
+          "breathlessness",
+          "dyspnea"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "wheezing": {
+      "base_weight": 8,
+      "body_system": "respiratory",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "wheezing+shortness_of_breath"
+      ],
+      "common_names": {
+        "hi": [
+          "seeti ki awaaz",
+          "ghargharahat"
+        ],
+        "te": [
+          "relakattu",
+          "seeti"
+        ],
+        "ta": [
+          "moochu seelal"
+        ],
+        "en": [
+          "wheezing",
+          "whistling breath"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "blood_in_sputum": {
+      "base_weight": 16,
+      "body_system": "respiratory",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "blood_in_sputum+weight_loss",
+        "blood_in_sputum+cough"
+      ],
+      "common_names": {
+        "hi": [
+          "khoon wali balgam",
+          "balgam mein khoon"
+        ],
+        "te": [
+          "rakthpu thummu",
+          "netturu kapha"
+        ],
+        "ta": [
+          "ratham kalappu irumal"
+        ],
+        "en": [
+          "blood in sputum",
+          "hemoptysis",
+          "coughing blood"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "sore_throat": {
+      "base_weight": 4,
+      "body_system": "respiratory",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "gala dard",
+          "gale mein kharash"
+        ],
+        "te": [
+          "gonthu noppi",
+          "gonthu manta"
+        ],
+        "ta": [
+          "thondai vali"
+        ],
+        "en": [
+          "sore throat",
+          "throat pain"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "nasal_congestion": {
+      "base_weight": 3,
+      "body_system": "respiratory",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "naak band",
+          "naak jam"
+        ],
+        "te": [
+          "mukku banda",
+          "jalabu"
+        ],
+        "ta": [
+          "mookku adaipu"
+        ],
+        "en": [
+          "nasal congestion",
+          "stuffy nose",
+          "blocked nose"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "runny_nose": {
+      "base_weight": 2,
+      "body_system": "respiratory",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "naak bahna",
+          "naak se paani"
+        ],
+        "te": [
+          "mukku kaaru",
+          "jalabu"
+        ],
+        "ta": [
+          "mookku ozhukal"
+        ],
+        "en": [
+          "runny nose",
+          "rhinorrhea"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "chest_tightness": {
+      "base_weight": 10,
+      "body_system": "respiratory",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "chest_tightness+shortness_of_breath"
+      ],
+      "common_names": {
+        "hi": [
+          "seene mein jakdan",
+          "chhati mein bharipan"
+        ],
+        "te": [
+          "chhati lo baram",
+          "gundee baram"
+        ],
+        "ta": [
+          "maarbil irukkam"
+        ],
+        "en": [
+          "chest tightness",
+          "tight chest"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "rapid_breathing": {
+      "base_weight": 12,
+      "body_system": "respiratory",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "rapid_breathing+fever",
+        "rapid_breathing+chest_pain"
+      ],
+      "common_names": {
+        "hi": [
+          "tez saans",
+          "jaldi jaldi saans"
+        ],
+        "te": [
+          "vegamga swasa",
+          "egirey swasa"
+        ],
+        "ta": [
+          "vegamaana moochu"
+        ],
+        "en": [
+          "rapid breathing",
+          "tachypnea"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "difficulty_swallowing": {
+      "base_weight": 7,
+      "body_system": "respiratory",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "difficulty_swallowing+fever+sore_throat"
+      ],
+      "common_names": {
+        "hi": [
+          "nigalne mein takleef",
+          "khaana nigalna mushkil"
+        ],
+        "te": [
+          "mingu ivvadam kashtam"
+        ],
+        "ta": [
+          "vizhunguvathu kashtam"
+        ],
+        "en": [
+          "difficulty swallowing",
+          "dysphagia"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "snoring": {
+      "base_weight": 3,
+      "body_system": "respiratory",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "kharrate",
+          "kharrate lena"
+        ],
+        "te": [
+          "gorka",
+          "gorke petatam"
+        ],
+        "ta": [
+          "kuraattai"
+        ],
+        "en": [
+          "snoring",
+          "loud snoring"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "stridor": {
+      "base_weight": 15,
+      "body_system": "respiratory",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "stridor+fever",
+        "stridor+shortness_of_breath"
+      ],
+      "common_names": {
+        "hi": [
+          "saans mein awaaz",
+          "saans ki seeti"
+        ],
+        "te": [
+          "swasa lo seeti",
+          "seeti swasa"
+        ],
+        "ta": [
+          "moochu osai"
+        ],
+        "en": [
+          "stridor",
+          "noisy breathing"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "fever": {
+      "base_weight": 8,
+      "body_system": "systemic",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "fever+shortness_of_breath",
+        "fever+stiff_neck",
+        "fever+rash"
+      ],
+      "common_names": {
+        "hi": [
+          "bukhar",
+          "tap",
+          "jwar"
+        ],
+        "te": [
+          "jwaram",
+          "veyyi",
+          "jvaram"
+        ],
+        "ta": [
+          "kaaichal",
+          "suuram"
+        ],
+        "en": [
+          "fever",
+          "high temperature",
+          "pyrexia"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "fatigue": {
+      "base_weight": 4,
+      "body_system": "systemic",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "fatigue+weight_loss+night_sweats"
+      ],
+      "common_names": {
+        "hi": [
+          "thakan",
+          "kamzori"
+        ],
+        "te": [
+          "alasata",
+          "badhakam"
+        ],
+        "ta": [
+          "soarvu",
+          "kalappu"
+        ],
+        "en": [
+          "fatigue",
+          "tiredness",
+          "exhaustion"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "weight_loss": {
+      "base_weight": 9,
+      "body_system": "systemic",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "weight_loss+night_sweats",
+        "weight_loss+blood_in_sputum"
+      ],
+      "common_names": {
+        "hi": [
+          "vajan kam hona",
+          "vajan girna"
+        ],
+        "te": [
+          "baruvu taggadam"
+        ],
+        "ta": [
+          "edai kuraital"
+        ],
+        "en": [
+          "weight loss",
+          "losing weight",
+          "unintentional weight loss"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "night_sweats": {
+      "base_weight": 7,
+      "body_system": "systemic",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "night_sweats+weight_loss+cough"
+      ],
+      "common_names": {
+        "hi": [
+          "raat ko paseena",
+          "raat mein paseena"
+        ],
+        "te": [
+          "raathri chema",
+          "raatri chema pattu"
+        ],
+        "ta": [
+          "iravu viyarvai"
+        ],
+        "en": [
+          "night sweats",
+          "sweating at night"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "chills": {
+      "base_weight": 6,
+      "body_system": "systemic",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "chills+fever+joint_pain"
+      ],
+      "common_names": {
+        "hi": [
+          "thand lagna",
+          "kamp",
+          "jhurjhuri"
+        ],
+        "te": [
+          "chali",
+          "vankara"
+        ],
+        "ta": [
+          "kulir",
+          "nadukkal"
+        ],
+        "en": [
+          "chills",
+          "shivering",
+          "rigors"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "loss_of_appetite": {
+      "base_weight": 4,
+      "body_system": "systemic",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "bhookh na lagna",
+          "bhookh kam hona"
+        ],
+        "te": [
+          "aakali ledu",
+          "aakali taggadam"
+        ],
+        "ta": [
+          "pasi illaamai"
+        ],
+        "en": [
+          "loss of appetite",
+          "no appetite",
+          "anorexia"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "dehydration": {
+      "base_weight": 10,
+      "body_system": "systemic",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "dehydration+diarrhea+vomiting"
+      ],
+      "common_names": {
+        "hi": [
+          "paani ki kami",
+          "sharer mein paani kam"
+        ],
+        "te": [
+          "neellu taggadam",
+          "neerasam"
+        ],
+        "ta": [
+          "neer izhappu"
+        ],
+        "en": [
+          "dehydration",
+          "fluid loss",
+          "dry mouth"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "swollen_lymph_nodes": {
+      "base_weight": 7,
+      "body_system": "systemic",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "swollen_lymph_nodes+fever+weight_loss"
+      ],
+      "common_names": {
+        "hi": [
+          "giltiyan",
+          "gaath soojana"
+        ],
+        "te": [
+          "gandalu vaapu",
+          "gandalu puduthayi"
+        ],
+        "ta": [
+          "naeer kazhalaigal veekkam"
+        ],
+        "en": [
+          "swollen lymph nodes",
+          "swollen glands"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "generalized_weakness": {
+      "base_weight": 5,
+      "body_system": "systemic",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "kamzori",
+          "shareer mein takat nahin"
+        ],
+        "te": [
+          "balaveenam",
+          "shareer balaheenata"
+        ],
+        "ta": [
+          "udal balaveenam"
+        ],
+        "en": [
+          "weakness",
+          "body weakness",
+          "general weakness"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "body_aches": {
+      "base_weight": 5,
+      "body_system": "systemic",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "body_aches+fever+headache"
+      ],
+      "common_names": {
+        "hi": [
+          "badan dard",
+          "shareer mein dard"
+        ],
+        "te": [
+          "votilu noppu",
+          "shareer lo noppi"
+        ],
+        "ta": [
+          "udal vali"
+        ],
+        "en": [
+          "body aches",
+          "body pain",
+          "myalgia"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "loss_of_consciousness": {
+      "base_weight": 20,
+      "body_system": "systemic",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "loss_of_consciousness+fever",
+        "loss_of_consciousness+head_injury"
+      ],
+      "common_names": {
+        "hi": [
+          "behosh hona",
+          "hosh na rehna"
+        ],
+        "te": [
+          "spruha lekunda",
+          "maigam kolapovadam"
+        ],
+        "ta": [
+          "mayakkam",
+          "ninaivizhattal"
+        ],
+        "en": [
+          "loss of consciousness",
+          "fainting",
+          "passing out",
+          "unresponsive"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "excessive_thirst": {
+      "base_weight": 5,
+      "body_system": "systemic",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "excessive_thirst+frequent_urination"
+      ],
+      "common_names": {
+        "hi": [
+          "bahut pyaas lagna",
+          "zyaada pyaas"
+        ],
+        "te": [
+          "ekkuva daham",
+          "daham ekkuva avuta"
+        ],
+        "ta": [
+          "athiga thaagam"
+        ],
+        "en": [
+          "excessive thirst",
+          "polydipsia",
+          "very thirsty"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "abdominal_pain": {
+      "base_weight": 8,
+      "body_system": "gastrointestinal",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "abdominal_pain+vomiting+fever",
+        "abdominal_pain+blood_in_stool"
+      ],
+      "common_names": {
+        "hi": [
+          "pet dard",
+          "pet mein dard"
+        ],
+        "te": [
+          "kadupu noppi",
+          "potta noppi"
+        ],
+        "ta": [
+          "vayiru vali"
+        ],
+        "en": [
+          "abdominal pain",
+          "stomach ache",
+          "tummy pain"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "diarrhea": {
+      "base_weight": 7,
+      "body_system": "gastrointestinal",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "diarrhea+vomiting+dehydration",
+        "diarrhea+blood_in_stool"
+      ],
+      "common_names": {
+        "hi": [
+          "dast",
+          "loose motion",
+          "pet kharab"
+        ],
+        "te": [
+          "virechanalu",
+          "loose motions"
+        ],
+        "ta": [
+          "vayiru pokku",
+          "kazhichal"
+        ],
+        "en": [
+          "diarrhea",
+          "loose motions",
+          "watery stools"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "vomiting": {
+      "base_weight": 7,
+      "body_system": "gastrointestinal",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "vomiting+severe_headache",
+        "vomiting+abdominal_pain+fever"
+      ],
+      "common_names": {
+        "hi": [
+          "ulti",
+          "ulti hona",
+          "qay"
+        ],
+        "te": [
+          "vantulu",
+          "vakallu"
+        ],
+        "ta": [
+          "vaanthi"
+        ],
+        "en": [
+          "vomiting",
+          "throwing up",
+          "emesis"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "nausea": {
+      "base_weight": 4,
+      "body_system": "gastrointestinal",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "ji machlana",
+          "ulti jaisa lagna"
+        ],
+        "te": [
+          "vakaluga anipinchatam"
+        ],
+        "ta": [
+          "kumattal"
+        ],
+        "en": [
+          "nausea",
+          "feeling sick",
+          "queasy"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "constipation": {
+      "base_weight": 4,
+      "body_system": "gastrointestinal",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "kabz",
+          "qabz",
+          "pet saaf na hona"
+        ],
+        "te": [
+          "malabadhakam",
+          "motion raadu"
+        ],
+        "ta": [
+          "malaccikkal"
+        ],
+        "en": [
+          "constipation",
+          "hard stools"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "blood_in_stool": {
+      "base_weight": 15,
+      "body_system": "gastrointestinal",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "blood_in_stool+abdominal_pain",
+        "blood_in_stool+weight_loss"
+      ],
+      "common_names": {
+        "hi": [
+          "khoon wali potty",
+          "latrine mein khoon"
+        ],
+        "te": [
+          "motion lo rakthamu",
+          "netturu motion"
+        ],
+        "ta": [
+          "ratham kalappu malam"
+        ],
+        "en": [
+          "blood in stool",
+          "bloody stool",
+          "rectal bleeding"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "bloating": {
+      "base_weight": 3,
+      "body_system": "gastrointestinal",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "pet phoolna",
+          "gas banna"
+        ],
+        "te": [
+          "uddaram",
+          "kadupu vubbaram"
+        ],
+        "ta": [
+          "vayiru oombal"
+        ],
+        "en": [
+          "bloating",
+          "gas",
+          "distension"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "heartburn": {
+      "base_weight": 4,
+      "body_system": "gastrointestinal",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "seene mein jalan",
+          "khatti dakar"
+        ],
+        "te": [
+          "gunde manta",
+          "pulupu teenapulu"
+        ],
+        "ta": [
+          "nenjerichal"
+        ],
+        "en": [
+          "heartburn",
+          "acid reflux",
+          "acidity"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "jaundice": {
+      "base_weight": 13,
+      "body_system": "gastrointestinal",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "jaundice+fever",
+        "jaundice+abdominal_pain"
+      ],
+      "common_names": {
+        "hi": [
+          "peeliya",
+          "piliya"
+        ],
+        "te": [
+          "kamalamu",
+          "pasupu kamalamu"
+        ],
+        "ta": [
+          "mancal kaamalai"
+        ],
+        "en": [
+          "jaundice",
+          "yellow eyes",
+          "yellow skin"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "difficulty_eating": {
+      "base_weight": 6,
+      "body_system": "gastrointestinal",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "khaana na kha paana",
+          "khaane mein dikkat"
+        ],
+        "te": [
+          "thinalekapovadam"
+        ],
+        "ta": [
+          "unavu unavillamai"
+        ],
+        "en": [
+          "difficulty eating",
+          "cannot eat",
+          "food refusal"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "rectal_pain": {
+      "base_weight": 5,
+      "body_system": "gastrointestinal",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "malaashay mein dard",
+          "pichhe dard"
+        ],
+        "te": [
+          "maladdari noppi"
+        ],
+        "ta": [
+          "malavay vali"
+        ],
+        "en": [
+          "rectal pain",
+          "pain during bowel movement"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "black_tarry_stools": {
+      "base_weight": 16,
+      "body_system": "gastrointestinal",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "black_tarry_stools+abdominal_pain",
+        "black_tarry_stools+vomiting"
+      ],
+      "common_names": {
+        "hi": [
+          "kaali potty",
+          "tar jaisi potty"
+        ],
+        "te": [
+          "nalla motion",
+          "tar lanti motion"
+        ],
+        "ta": [
+          "karuppu malam"
+        ],
+        "en": [
+          "black tarry stools",
+          "melena",
+          "dark stools"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "chest_pain": {
+      "base_weight": 16,
+      "body_system": "cardiovascular",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "chest_pain+shortness_of_breath",
+        "chest_pain+sweating",
+        "chest_pain+left_arm_pain"
+      ],
+      "common_names": {
+        "hi": [
+          "seene mein dard",
+          "chhati mein dard"
+        ],
+        "te": [
+          "chhati noppi",
+          "gunde noppi"
+        ],
+        "ta": [
+          "nenju vali",
+          "maarbhu vali"
+        ],
+        "en": [
+          "chest pain",
+          "heart pain",
+          "angina"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "palpitations": {
+      "base_weight": 8,
+      "body_system": "cardiovascular",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "palpitations+shortness_of_breath",
+        "palpitations+chest_pain"
+      ],
+      "common_names": {
+        "hi": [
+          "dil ki dhadkan tez",
+          "dhadkan badhna"
+        ],
+        "te": [
+          "gunde vega veega kottadam"
+        ],
+        "ta": [
+          "padapadappu",
+          "idhaya thudippu"
+        ],
+        "en": [
+          "palpitations",
+          "heart racing",
+          "fast heartbeat"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "swelling_in_legs": {
+      "base_weight": 9,
+      "body_system": "cardiovascular",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "swelling_in_legs+shortness_of_breath"
+      ],
+      "common_names": {
+        "hi": [
+          "pair mein sujan",
+          "pair soojana"
+        ],
+        "te": [
+          "kallu vaapu",
+          "kallu ubbaram"
+        ],
+        "ta": [
+          "kaal veekkam"
+        ],
+        "en": [
+          "swelling in legs",
+          "leg edema",
+          "swollen feet"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "dizziness": {
+      "base_weight": 6,
+      "body_system": "cardiovascular",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "dizziness+chest_pain",
+        "dizziness+loss_of_consciousness"
+      ],
+      "common_names": {
+        "hi": [
+          "chakkar aana",
+          "sir ghoomna"
+        ],
+        "te": [
+          "tala tiragadam",
+          "tala tiruguddi"
+        ],
+        "ta": [
+          "thalai suttral"
+        ],
+        "en": [
+          "dizziness",
+          "lightheadedness",
+          "feeling faint"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "high_blood_pressure_symptoms": {
+      "base_weight": 10,
+      "body_system": "cardiovascular",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "high_blood_pressure_symptoms+headache+vision_changes"
+      ],
+      "common_names": {
+        "hi": [
+          "BP badha hua",
+          "ucch raktchap"
+        ],
+        "te": [
+          "BP ekkuva",
+          "rakta pottudu ekkuva"
+        ],
+        "ta": [
+          "uyar rattha azhuththam"
+        ],
+        "en": [
+          "high BP symptoms",
+          "hypertension symptoms"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "left_arm_pain": {
+      "base_weight": 14,
+      "body_system": "cardiovascular",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "left_arm_pain+chest_pain",
+        "left_arm_pain+sweating"
+      ],
+      "common_names": {
+        "hi": [
+          "bayen haath mein dard",
+          "bayen baazu mein dard"
+        ],
+        "te": [
+          "edama cheiyi noppi"
+        ],
+        "ta": [
+          "idathu kai vali"
+        ],
+        "en": [
+          "left arm pain",
+          "pain in left arm"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "irregular_heartbeat": {
+      "base_weight": 10,
+      "body_system": "cardiovascular",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "irregular_heartbeat+shortness_of_breath",
+        "irregular_heartbeat+dizziness"
+      ],
+      "common_names": {
+        "hi": [
+          "dhadkan aniyamit",
+          "dil ki dhadkan gadbad"
+        ],
+        "te": [
+          "gunde asaadhaarana kottadam"
+        ],
+        "ta": [
+          "othungaatra idhaya thudippu"
+        ],
+        "en": [
+          "irregular heartbeat",
+          "arrhythmia"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "cold_extremities": {
+      "base_weight": 5,
+      "body_system": "cardiovascular",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "haath pair thande",
+          "haath pair thand"
+        ],
+        "te": [
+          "cheetulu kallu challa"
+        ],
+        "ta": [
+          "kulir kaigal kaalkal"
+        ],
+        "en": [
+          "cold hands and feet",
+          "cold extremities"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "cyanosis": {
+      "base_weight": 17,
+      "body_system": "cardiovascular",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "cyanosis+shortness_of_breath"
+      ],
+      "common_names": {
+        "hi": [
+          "hoth neele padna",
+          "neela rang"
+        ],
+        "te": [
+          "pedavulu neelam",
+          "pedhavulu neelam avadam"
+        ],
+        "ta": [
+          "neela niram udal"
+        ],
+        "en": [
+          "blue lips",
+          "cyanosis",
+          "bluish skin"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "fainting": {
+      "base_weight": 12,
+      "body_system": "cardiovascular",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "fainting+chest_pain",
+        "fainting+seizure"
+      ],
+      "common_names": {
+        "hi": [
+          "behosh hona",
+          "gir padna"
+        ],
+        "te": [
+          "maigam povadam",
+          "maigam kolupovadam"
+        ],
+        "ta": [
+          "mayakkam adaithal"
+        ],
+        "en": [
+          "fainting",
+          "syncope",
+          "blacking out"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "headache": {
+      "base_weight": 5,
+      "body_system": "neurological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "headache+fever+stiff_neck",
+        "headache+vomiting+vision_changes"
+      ],
+      "common_names": {
+        "hi": [
+          "sir dard",
+          "sar dard"
+        ],
+        "te": [
+          "tala noppi",
+          "talakai noppi"
+        ],
+        "ta": [
+          "thalai vali"
+        ],
+        "en": [
+          "headache",
+          "head pain"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "seizure": {
+      "base_weight": 18,
+      "body_system": "neurological",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "seizure+fever",
+        "seizure+loss_of_consciousness"
+      ],
+      "common_names": {
+        "hi": [
+          "mirgi",
+          "daurey padna",
+          "jhatkay"
+        ],
+        "te": [
+          "fits",
+          "moorccha"
+        ],
+        "ta": [
+          "valippu"
+        ],
+        "en": [
+          "seizure",
+          "convulsion",
+          "fits",
+          "epileptic attack"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "stiff_neck": {
+      "base_weight": 13,
+      "body_system": "neurological",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "stiff_neck+fever+headache"
+      ],
+      "common_names": {
+        "hi": [
+          "gardan akad jaana",
+          "gardan mein dard"
+        ],
+        "te": [
+          "meda biddhanam",
+          "meda gattibadatam"
+        ],
+        "ta": [
+          "kazhuththu virappu"
+        ],
+        "en": [
+          "stiff neck",
+          "neck stiffness",
+          "neck rigidity"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "numbness": {
+      "base_weight": 8,
+      "body_system": "neurological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "numbness+weakness+facial_drooping"
+      ],
+      "common_names": {
+        "hi": [
+          "sunn padna",
+          "jhunjhunahat"
+        ],
+        "te": [
+          "janum lekundam",
+          "moratadam"
+        ],
+        "ta": [
+          "maratthuppu"
+        ],
+        "en": [
+          "numbness",
+          "tingling",
+          "pins and needles"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "sudden_paralysis": {
+      "base_weight": 20,
+      "body_system": "neurological",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "sudden_paralysis+facial_drooping",
+        "sudden_paralysis+slurred_speech"
+      ],
+      "common_names": {
+        "hi": [
+          "achanak lakwa",
+          "paralysis ho jaana"
+        ],
+        "te": [
+          "hathaattu paksha vaatam"
+        ],
+        "ta": [
+          "thirukku vaatham"
+        ],
+        "en": [
+          "sudden paralysis",
+          "cannot move limbs",
+          "stroke symptoms"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "facial_drooping": {
+      "base_weight": 19,
+      "body_system": "neurological",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "facial_drooping+slurred_speech",
+        "facial_drooping+sudden_paralysis"
+      ],
+      "common_names": {
+        "hi": [
+          "chehra latakna",
+          "mooh tedha hona"
+        ],
+        "te": [
+          "mukhamu vaalipotundi"
+        ],
+        "ta": [
+          "mugam saaivu"
+        ],
+        "en": [
+          "facial drooping",
+          "face drooping",
+          "droopy face"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "slurred_speech": {
+      "base_weight": 18,
+      "body_system": "neurological",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "slurred_speech+facial_drooping",
+        "slurred_speech+sudden_paralysis"
+      ],
+      "common_names": {
+        "hi": [
+          "bolne mein dikkat",
+          "zuban ladkhadana"
+        ],
+        "te": [
+          "matalu kalipi chepadam",
+          "matalu raavu"
+        ],
+        "ta": [
+          "thudumaaral peechchu"
+        ],
+        "en": [
+          "slurred speech",
+          "difficulty speaking",
+          "speech problems"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "confusion": {
+      "base_weight": 12,
+      "body_system": "neurological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "confusion+fever",
+        "confusion+headache"
+      ],
+      "common_names": {
+        "hi": [
+          "gehraaan",
+          "samajh na aana",
+          "confuse hona"
+        ],
+        "te": [
+          "gadabida",
+          "artham kaadu"
+        ],
+        "ta": [
+          "kuzhappam",
+          "manam azhiyum"
+        ],
+        "en": [
+          "confusion",
+          "disorientation",
+          "altered mental state"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "memory_loss": {
+      "base_weight": 7,
+      "body_system": "neurological",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "yaaddasht kamzor",
+          "bhool jaana"
+        ],
+        "te": [
+          "gnaapakasakti taggadam"
+        ],
+        "ta": [
+          "niyaabakam kuraital"
+        ],
+        "en": [
+          "memory loss",
+          "forgetfulness"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "tremors": {
+      "base_weight": 6,
+      "body_system": "neurological",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "kaampna",
+          "haath kaampna"
+        ],
+        "te": [
+          "vadakadam",
+          "cheyyi vadakadam"
+        ],
+        "ta": [
+          "nadhukkam"
+        ],
+        "en": [
+          "tremors",
+          "shaking",
+          "trembling"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "vertigo": {
+      "base_weight": 7,
+      "body_system": "neurological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "vertigo+vomiting+hearing_loss"
+      ],
+      "common_names": {
+        "hi": [
+          "chakkar aana",
+          "duniya ghoomti hui"
+        ],
+        "te": [
+          "tala tiragadam",
+          "bhramanamu"
+        ],
+        "ta": [
+          "thalai suttral"
+        ],
+        "en": [
+          "vertigo",
+          "spinning sensation",
+          "room spinning"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "joint_pain": {
+      "base_weight": 6,
+      "body_system": "musculoskeletal",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "joint_pain+fever+rash"
+      ],
+      "common_names": {
+        "hi": [
+          "jodon mein dard",
+          "gathiya"
+        ],
+        "te": [
+          "keelulanoppi"
+        ],
+        "ta": [
+          "moottu vali"
+        ],
+        "en": [
+          "joint pain",
+          "arthralgia",
+          "joint ache"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "back_pain": {
+      "base_weight": 5,
+      "body_system": "musculoskeletal",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "back_pain+numbness+leg_weakness"
+      ],
+      "common_names": {
+        "hi": [
+          "kamar dard",
+          "peeth dard"
+        ],
+        "te": [
+          "nadumu noppi",
+          "veepu noppi"
+        ],
+        "ta": [
+          "muthuhu vali"
+        ],
+        "en": [
+          "back pain",
+          "backache",
+          "lower back pain"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "muscle_cramps": {
+      "base_weight": 4,
+      "body_system": "musculoskeletal",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "ainthan",
+          "maaspeshi mein dard"
+        ],
+        "te": [
+          "kallu nookuludam",
+          "kandallu"
+        ],
+        "ta": [
+          "thachai pidippu"
+        ],
+        "en": [
+          "muscle cramps",
+          "cramps",
+          "spasms"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "swollen_joints": {
+      "base_weight": 8,
+      "body_system": "musculoskeletal",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "swollen_joints+fever"
+      ],
+      "common_names": {
+        "hi": [
+          "jod soojana",
+          "jod mein sujan"
+        ],
+        "te": [
+          "keellu vaakadam",
+          "keellu vaapu"
+        ],
+        "ta": [
+          "moottu veekkam"
+        ],
+        "en": [
+          "swollen joints",
+          "joint swelling"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "bone_pain": {
+      "base_weight": 8,
+      "body_system": "musculoskeletal",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "bone_pain+fever+weight_loss"
+      ],
+      "common_names": {
+        "hi": [
+          "haddi mein dard",
+          "haddi dard"
+        ],
+        "te": [
+          "yemuka noppi"
+        ],
+        "ta": [
+          "elumbu vali"
+        ],
+        "en": [
+          "bone pain",
+          "deep bone ache"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "limited_mobility": {
+      "base_weight": 6,
+      "body_system": "musculoskeletal",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "hilne dhulne mein dikkat",
+          "chal nahin paate"
+        ],
+        "te": [
+          "kadalika kashdam"
+        ],
+        "ta": [
+          "iyakkam kuraivu"
+        ],
+        "en": [
+          "limited mobility",
+          "difficulty moving",
+          "stiffness"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "leg_weakness": {
+      "base_weight": 9,
+      "body_system": "musculoskeletal",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "leg_weakness+numbness+back_pain"
+      ],
+      "common_names": {
+        "hi": [
+          "pair mein kamzori",
+          "pair mein takat nahi"
+        ],
+        "te": [
+          "kallu balaheenata"
+        ],
+        "ta": [
+          "kaal balaveenam"
+        ],
+        "en": [
+          "leg weakness",
+          "weak legs",
+          "legs giving way"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "neck_pain": {
+      "base_weight": 5,
+      "body_system": "musculoskeletal",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "gardan mein dard"
+        ],
+        "te": [
+          "meda noppi"
+        ],
+        "ta": [
+          "kazhuththu vali"
+        ],
+        "en": [
+          "neck pain",
+          "cervical pain"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "hip_pain": {
+      "base_weight": 5,
+      "body_system": "musculoskeletal",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "kulhe mein dard",
+          "koolhe ka dard"
+        ],
+        "te": [
+          "totu noppi"
+        ],
+        "ta": [
+          "idupu vali"
+        ],
+        "en": [
+          "hip pain"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "fracture_suspected": {
+      "base_weight": 14,
+      "body_system": "musculoskeletal",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "fracture_suspected+swelling"
+      ],
+      "common_names": {
+        "hi": [
+          "haddi tootna",
+          "fracture hona"
+        ],
+        "te": [
+          "yemuka bhangadam",
+          "yemuka virigindi"
+        ],
+        "ta": [
+          "elumbu murivu"
+        ],
+        "en": [
+          "suspected fracture",
+          "broken bone",
+          "fracture"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "rash": {
+      "base_weight": 5,
+      "body_system": "dermatological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "rash+fever",
+        "rash+joint_pain"
+      ],
+      "common_names": {
+        "hi": [
+          "daane",
+          "khujli wale daane"
+        ],
+        "te": [
+          "doddalu",
+          "charma vikaram"
+        ],
+        "ta": [
+          "thol azhichchi",
+          "thol porukkal"
+        ],
+        "en": [
+          "rash",
+          "skin rash",
+          "eruption"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "itching": {
+      "base_weight": 3,
+      "body_system": "dermatological",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "khujli",
+          "kharish"
+        ],
+        "te": [
+          "durada",
+          "gadda"
+        ],
+        "ta": [
+          "arippu"
+        ],
+        "en": [
+          "itching",
+          "pruritus",
+          "itchy skin"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "wound_not_healing": {
+      "base_weight": 8,
+      "body_system": "dermatological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "wound_not_healing+fever"
+      ],
+      "common_names": {
+        "hi": [
+          "ghav theek na hona",
+          "zaakhm na bharna"
+        ],
+        "te": [
+          "ghaayam manadamu"
+        ],
+        "ta": [
+          "pun aaramai"
+        ],
+        "en": [
+          "wound not healing",
+          "non-healing wound",
+          "chronic wound"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "skin_discoloration": {
+      "base_weight": 5,
+      "body_system": "dermatological",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "chamdi ka rang badalna",
+          "daag"
+        ],
+        "te": [
+          "charma varna maarpulu"
+        ],
+        "ta": [
+          "thol niram maatram"
+        ],
+        "en": [
+          "skin discoloration",
+          "skin patches",
+          "pigmentation"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "boils_abscess": {
+      "base_weight": 7,
+      "body_system": "dermatological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "boils_abscess+fever"
+      ],
+      "common_names": {
+        "hi": [
+          "phoda",
+          "phunsi"
+        ],
+        "te": [
+          "guddalu",
+          "puggulu"
+        ],
+        "ta": [
+          "katti",
+          "kozhuppu katti"
+        ],
+        "en": [
+          "boils",
+          "abscess",
+          "skin abscess"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "burns": {
+      "base_weight": 12,
+      "body_system": "dermatological",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "burns+fever",
+        "burns+wound_not_healing"
+      ],
+      "common_names": {
+        "hi": [
+          "jalna",
+          "jalane ka nishaan"
+        ],
+        "te": [
+          "kaalu",
+          "kaallindi"
+        ],
+        "ta": [
+          "theekkaayam",
+          "veppukkaayam"
+        ],
+        "en": [
+          "burns",
+          "burn injury",
+          "scalding"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "swelling": {
+      "base_weight": 5,
+      "body_system": "dermatological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "swelling+redness+fever"
+      ],
+      "common_names": {
+        "hi": [
+          "sujan",
+          "soojana"
+        ],
+        "te": [
+          "vaapu"
+        ],
+        "ta": [
+          "veekkam"
+        ],
+        "en": [
+          "swelling",
+          "edema",
+          "puffiness"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "hair_loss": {
+      "base_weight": 2,
+      "body_system": "dermatological",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "baal jharna",
+          "baal tootna"
+        ],
+        "te": [
+          "juuttu raalatam"
+        ],
+        "ta": [
+          "mudi kodal"
+        ],
+        "en": [
+          "hair loss",
+          "alopecia",
+          "balding"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "skin_ulcers": {
+      "base_weight": 9,
+      "body_system": "dermatological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "skin_ulcers+fever+wound_not_healing"
+      ],
+      "common_names": {
+        "hi": [
+          "chamdi ka nasoor",
+          "ghav"
+        ],
+        "te": [
+          "charma puttlu"
+        ],
+        "ta": [
+          "thol pun"
+        ],
+        "en": [
+          "skin ulcers",
+          "open sores"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "excessive_sweating": {
+      "base_weight": 3,
+      "body_system": "dermatological",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "bahut paseena aana",
+          "zyada paseena"
+        ],
+        "te": [
+          "ekkuva chema padam"
+        ],
+        "ta": [
+          "athiga viyarvai"
+        ],
+        "en": [
+          "excessive sweating",
+          "hyperhidrosis"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "vaginal_bleeding": {
+      "base_weight": 14,
+      "body_system": "reproductive",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "vaginal_bleeding+abdominal_pain",
+        "vaginal_bleeding+pregnancy"
+      ],
+      "common_names": {
+        "hi": [
+          "yoni se khoon",
+          "bleeding hona"
+        ],
+        "te": [
+          "yonu nundi rakthamu"
+        ],
+        "ta": [
+          "pirappu uruppu rathapokupu"
+        ],
+        "en": [
+          "vaginal bleeding",
+          "abnormal bleeding"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "missed_period": {
+      "base_weight": 5,
+      "body_system": "reproductive",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "missed_period+abdominal_pain"
+      ],
+      "common_names": {
+        "hi": [
+          "mahwari na aana",
+          "periods na aana"
+        ],
+        "te": [
+          "netthuru raaledu",
+          "periods raaledu"
+        ],
+        "ta": [
+          "maathavitai thavariythu"
+        ],
+        "en": [
+          "missed period",
+          "amenorrhea",
+          "late period"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "pelvic_pain": {
+      "base_weight": 8,
+      "body_system": "reproductive",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "pelvic_pain+fever",
+        "pelvic_pain+vaginal_bleeding"
+      ],
+      "common_names": {
+        "hi": [
+          "pet ke neeche dard",
+          "kokh mein dard"
+        ],
+        "te": [
+          "moddu noppi",
+          "kalodu noppi"
+        ],
+        "ta": [
+          "idipu vali"
+        ],
+        "en": [
+          "pelvic pain",
+          "lower abdominal pain"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "painful_urination": {
+      "base_weight": 7,
+      "body_system": "reproductive",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "painful_urination+fever+back_pain"
+      ],
+      "common_names": {
+        "hi": [
+          "peshab mein jalan",
+          "peshab mein dard"
+        ],
+        "te": [
+          "moothram lo manta"
+        ],
+        "ta": [
+          "siruneer erichal"
+        ],
+        "en": [
+          "painful urination",
+          "burning urination",
+          "dysuria"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "frequent_urination": {
+      "base_weight": 5,
+      "body_system": "reproductive",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "frequent_urination+excessive_thirst"
+      ],
+      "common_names": {
+        "hi": [
+          "baar baar peshab aana"
+        ],
+        "te": [
+          "marumaaru moothram raavadam"
+        ],
+        "ta": [
+          "adikaadi siruneer"
+        ],
+        "en": [
+          "frequent urination",
+          "polyuria"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "breast_lump": {
+      "base_weight": 11,
+      "body_system": "reproductive",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "breast_lump+skin_discoloration"
+      ],
+      "common_names": {
+        "hi": [
+          "sthan mein gilti",
+          "chhati mein gaanth"
+        ],
+        "te": [
+          "rolu lo gaddalu"
+        ],
+        "ta": [
+          "maarbu katti"
+        ],
+        "en": [
+          "breast lump",
+          "lump in breast"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "pregnancy_complications": {
+      "base_weight": 15,
+      "body_system": "reproductive",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "pregnancy_complications+vaginal_bleeding",
+        "pregnancy_complications+high_blood_pressure_symptoms"
+      ],
+      "common_names": {
+        "hi": [
+          "garbhavastha mein dikkat",
+          "pregnancy problem"
+        ],
+        "te": [
+          "garbham lo samasyalu"
+        ],
+        "ta": [
+          "karpakaala pinaivu"
+        ],
+        "en": [
+          "pregnancy complications",
+          "pregnancy problem"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "penile_discharge": {
+      "base_weight": 8,
+      "body_system": "reproductive",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "penile_discharge+painful_urination"
+      ],
+      "common_names": {
+        "hi": [
+          "ling se paani aana",
+          "ling se discharge"
+        ],
+        "te": [
+          "lingamu nundi sravamu"
+        ],
+        "ta": [
+          "aaan uruppu ozhukal"
+        ],
+        "en": [
+          "penile discharge",
+          "urethral discharge"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "testicular_pain": {
+      "base_weight": 10,
+      "body_system": "reproductive",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "testicular_pain+swelling+fever"
+      ],
+      "common_names": {
+        "hi": [
+          "andkosh mein dard"
+        ],
+        "te": [
+          "vrushanu noppi"
+        ],
+        "ta": [
+          "vidhaipal vali"
+        ],
+        "en": [
+          "testicular pain",
+          "pain in testicles"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "menstrual_cramps_severe": {
+      "base_weight": 6,
+      "body_system": "reproductive",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "mahwari mein bahut dard",
+          "periods mein dard"
+        ],
+        "te": [
+          "netthuru samayam lo noppi"
+        ],
+        "ta": [
+          "maathavitai vali"
+        ],
+        "en": [
+          "severe menstrual cramps",
+          "dysmenorrhea",
+          "period pain"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "eye_pain": {
+      "base_weight": 7,
+      "body_system": "ophthalmological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "eye_pain+vision_changes+headache"
+      ],
+      "common_names": {
+        "hi": [
+          "aankh mein dard"
+        ],
+        "te": [
+          "kannu noppi"
+        ],
+        "ta": [
+          "kan vali"
+        ],
+        "en": [
+          "eye pain",
+          "pain in eye"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "vision_changes": {
+      "base_weight": 10,
+      "body_system": "ophthalmological",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "vision_changes+headache",
+        "vision_changes+eye_pain"
+      ],
+      "common_names": {
+        "hi": [
+          "nazar kamzor hona",
+          "dhundhla dikhna"
+        ],
+        "te": [
+          "choopu maardindi",
+          "kannu andham"
+        ],
+        "ta": [
+          "paarvai maatram"
+        ],
+        "en": [
+          "vision changes",
+          "blurred vision",
+          "vision loss"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "eye_redness": {
+      "base_weight": 4,
+      "body_system": "ophthalmological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "eye_redness+eye_pain+fever"
+      ],
+      "common_names": {
+        "hi": [
+          "aankh laal hona"
+        ],
+        "te": [
+          "kannu errabadatam"
+        ],
+        "ta": [
+          "kan sivappu"
+        ],
+        "en": [
+          "red eye",
+          "eye redness",
+          "conjunctivitis"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "eye_discharge": {
+      "base_weight": 4,
+      "body_system": "ophthalmological",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "aankh se paani aana",
+          "keechad"
+        ],
+        "te": [
+          "kannu nundi neeru"
+        ],
+        "ta": [
+          "kan ozhukal"
+        ],
+        "en": [
+          "eye discharge",
+          "watery eyes",
+          "eye pus"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "sudden_vision_loss": {
+      "base_weight": 19,
+      "body_system": "ophthalmological",
+      "is_red_flag": true,
+      "red_flag_combinations": [
+        "sudden_vision_loss+headache",
+        "sudden_vision_loss+eye_pain"
+      ],
+      "common_names": {
+        "hi": [
+          "achanak dikhna band hona",
+          "aankh ki roshni jaana"
+        ],
+        "te": [
+          "hathaattu chopu povadam"
+        ],
+        "ta": [
+          "thirukku paarvai izhappu"
+        ],
+        "en": [
+          "sudden vision loss",
+          "sudden blindness"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "itchy_eyes": {
+      "base_weight": 2,
+      "body_system": "ophthalmological",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "aankhon mein khujli"
+        ],
+        "te": [
+          "kannu lo durada"
+        ],
+        "ta": [
+          "kan arippu"
+        ],
+        "en": [
+          "itchy eyes",
+          "eye itching"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "double_vision": {
+      "base_weight": 10,
+      "body_system": "ophthalmological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "double_vision+headache+vomiting"
+      ],
+      "common_names": {
+        "hi": [
+          "do do dikhna"
+        ],
+        "te": [
+          "rendu rendu chopu"
+        ],
+        "ta": [
+          "irattu paarvai"
+        ],
+        "en": [
+          "double vision",
+          "diplopia",
+          "seeing double"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "sensitivity_to_light": {
+      "base_weight": 5,
+      "body_system": "ophthalmological",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "sensitivity_to_light+headache+stiff_neck"
+      ],
+      "common_names": {
+        "hi": [
+          "roshni se takleef",
+          "dhoop mein dikkat"
+        ],
+        "te": [
+          "veligilo baadhaa"
+        ],
+        "ta": [
+          "olippadam"
+        ],
+        "en": [
+          "light sensitivity",
+          "photophobia"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "ear_pain": {
+      "base_weight": 5,
+      "body_system": "ent",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "ear_pain+fever+ear_discharge"
+      ],
+      "common_names": {
+        "hi": [
+          "kaan mein dard",
+          "kaan dard"
+        ],
+        "te": [
+          "chevi noppi"
+        ],
+        "ta": [
+          "kaathu vali"
+        ],
+        "en": [
+          "ear pain",
+          "earache",
+          "otalgia"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "hearing_loss": {
+      "base_weight": 8,
+      "body_system": "ent",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "hearing_loss+ear_pain",
+        "hearing_loss+vertigo"
+      ],
+      "common_names": {
+        "hi": [
+          "sunai na dena",
+          "kaan se kam sunna"
+        ],
+        "te": [
+          "vinabadu taggadam"
+        ],
+        "ta": [
+          "kaathu kelamai"
+        ],
+        "en": [
+          "hearing loss",
+          "deafness",
+          "hard of hearing"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "ear_discharge": {
+      "base_weight": 7,
+      "body_system": "ent",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "ear_discharge+fever"
+      ],
+      "common_names": {
+        "hi": [
+          "kaan se paani aana",
+          "kaan bahna"
+        ],
+        "te": [
+          "chevi nundi neeru"
+        ],
+        "ta": [
+          "kaathu ozhukal"
+        ],
+        "en": [
+          "ear discharge",
+          "fluid from ear"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "tinnitus": {
+      "base_weight": 4,
+      "body_system": "ent",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "kaan mein awaaz",
+          "kaan baj rahe hain"
+        ],
+        "te": [
+          "chevi lo gundrandam"
+        ],
+        "ta": [
+          "kaathu oosai"
+        ],
+        "en": [
+          "ringing in ears",
+          "tinnitus"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "nosebleed": {
+      "base_weight": 7,
+      "body_system": "ent",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "nosebleed+headache",
+        "nosebleed+high_blood_pressure_symptoms"
+      ],
+      "common_names": {
+        "hi": [
+          "naak se khoon",
+          "nakseer"
+        ],
+        "te": [
+          "mukku nundi rakthamu"
+        ],
+        "ta": [
+          "mookku rathapokupu"
+        ],
+        "en": [
+          "nosebleed",
+          "epistaxis",
+          "nose bleeding"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "sinus_pain": {
+      "base_weight": 5,
+      "body_system": "ent",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "sinus_pain+fever+nasal_congestion"
+      ],
+      "common_names": {
+        "hi": [
+          "sinus dard",
+          "naak ke upar dard"
+        ],
+        "te": [
+          "sinus noppi"
+        ],
+        "ta": [
+          "mookku kuthi vali"
+        ],
+        "en": [
+          "sinus pain",
+          "sinusitis",
+          "facial pressure"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "hoarseness": {
+      "base_weight": 4,
+      "body_system": "ent",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "awaaz baith jaana",
+          "gala baithna"
+        ],
+        "te": [
+          "gonthu maaripovadam"
+        ],
+        "ta": [
+          "kural maatram"
+        ],
+        "en": [
+          "hoarseness",
+          "raspy voice",
+          "voice change"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "mouth_ulcers": {
+      "base_weight": 3,
+      "body_system": "ent",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "muh mein chhale",
+          "chhale"
+        ],
+        "te": [
+          "nootti puttlu"
+        ],
+        "ta": [
+          "vaai pun"
+        ],
+        "en": [
+          "mouth ulcers",
+          "canker sores",
+          "mouth sores"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "toothache": {
+      "base_weight": 5,
+      "body_system": "ent",
+      "is_red_flag": false,
+      "red_flag_combinations": [],
+      "common_names": {
+        "hi": [
+          "daant mein dard",
+          "daant dard"
+        ],
+        "te": [
+          "pantu noppi"
+        ],
+        "ta": [
+          "pal vali"
+        ],
+        "en": [
+          "toothache",
+          "dental pain",
+          "tooth pain"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    },
+    "swollen_face": {
+      "base_weight": 8,
+      "body_system": "ent",
+      "is_red_flag": false,
+      "red_flag_combinations": [
+        "swollen_face+fever+toothache"
+      ],
+      "common_names": {
+        "hi": [
+          "chehra soojana",
+          "mooh soojana"
+        ],
+        "te": [
+          "mukhamu vaapu"
+        ],
+        "ta": [
+          "mugam veekkam"
+        ],
+        "en": [
+          "swollen face",
+          "facial swelling"
+        ]
+      },
+      "severity_multipliers": {
+        "mild": 0.5,
+        "moderate": 1.0,
+        "severe": 1.8
+      },
+      "duration_multipliers": {
+        "acute": 1.0,
+        "subacute": 1.2,
+        "chronic": 1.6
+      }
+    }
+  },
+  "red_flag_combinations": [
+    {
+      "symptoms": [
+        "chest_pain",
+        "shortness_of_breath"
+      ],
+      "override_score": 90,
+      "reason": "Possible acute coronary syndrome or pulmonary embolism"
+    },
+    {
+      "symptoms": [
+        "chest_pain",
+        "left_arm_pain",
+        "sweating"
+      ],
+      "override_score": 95,
+      "reason": "Classic presentation of myocardial infarction (heart attack)"
+    },
+    {
+      "symptoms": [
+        "sudden_paralysis",
+        "facial_drooping",
+        "slurred_speech"
+      ],
+      "override_score": 95,
+      "reason": "Strong indicators of acute stroke — FAST protocol activation required"
+    },
+    {
+      "symptoms": [
+        "fever",
+        "stiff_neck",
+        "headache"
+      ],
+      "override_score": 90,
+      "reason": "Possible meningitis — requires immediate lumbar puncture and antibiotics"
+    },
+    {
+      "symptoms": [
+        "loss_of_consciousness",
+        "seizure"
+      ],
+      "override_score": 92,
+      "reason": "Status epilepticus or severe neurological emergency"
+    },
+    {
+      "symptoms": [
+        "severe_difficulty_breathing",
+        "cyanosis"
+      ],
+      "override_score": 95,
+      "reason": "Severe respiratory failure — immediate oxygen and intubation may be required"
+    },
+    {
+      "symptoms": [
+        "vaginal_bleeding",
+        "abdominal_pain"
+      ],
+      "override_score": 88,
+      "reason": "Possible ectopic pregnancy or obstetric emergency"
+    },
+    {
+      "symptoms": [
+        "blood_in_stool",
+        "abdominal_pain",
+        "vomiting"
+      ],
+      "override_score": 85,
+      "reason": "Possible GI hemorrhage or bowel obstruction"
+    },
+    {
+      "symptoms": [
+        "headache",
+        "vision_changes",
+        "vomiting"
+      ],
+      "override_score": 87,
+      "reason": "Possible raised intracranial pressure or hypertensive emergency"
+    },
+    {
+      "symptoms": [
+        "fever",
+        "rash",
+        "joint_pain"
+      ],
+      "override_score": 82,
+      "reason": "Possible dengue, chikungunya, or other arboviral infection"
+    },
+    {
+      "symptoms": [
+        "diarrhea",
+        "vomiting",
+        "dehydration"
+      ],
+      "override_score": 85,
+      "reason": "Severe gastroenteritis with risk of hypovolemic shock — common in rural India"
+    },
+    {
+      "symptoms": [
+        "shortness_of_breath",
+        "fever",
+        "cough"
+      ],
+      "override_score": 82,
+      "reason": "Possible severe pneumonia or acute respiratory infection"
+    },
+    {
+      "symptoms": [
+        "blood_in_sputum",
+        "weight_loss",
+        "night_sweats"
+      ],
+      "override_score": 88,
+      "reason": "Classic triad for pulmonary tuberculosis — immediate sputum test required"
+    },
+    {
+      "symptoms": [
+        "jaundice",
+        "fever",
+        "abdominal_pain"
+      ],
+      "override_score": 86,
+      "reason": "Possible acute hepatitis, cholangitis, or liver abscess"
+    },
+    {
+      "symptoms": [
+        "sudden_vision_loss",
+        "headache"
+      ],
+      "override_score": 90,
+      "reason": "Possible retinal artery occlusion, optic neuritis, or stroke"
+    },
+    {
+      "symptoms": [
+        "seizure",
+        "fever"
+      ],
+      "override_score": 88,
+      "reason": "Febrile seizure or CNS infection — especially dangerous in children"
+    },
+    {
+      "symptoms": [
+        "pregnancy_complications",
+        "high_blood_pressure_symptoms",
+        "headache"
+      ],
+      "override_score": 92,
+      "reason": "Possible pre-eclampsia or eclampsia — life-threatening obstetric emergency"
+    },
+    {
+      "symptoms": [
+        "black_tarry_stools",
+        "dizziness",
+        "fainting"
+      ],
+      "override_score": 90,
+      "reason": "Possible upper GI bleed with hemodynamic instability"
+    },
+    {
+      "symptoms": [
+        "burns",
+        "shortness_of_breath"
+      ],
+      "override_score": 88,
+      "reason": "Possible inhalational burn injury — airway compromise risk"
+    },
+    {
+      "symptoms": [
+        "confusion",
+        "fever",
+        "stiff_neck"
+      ],
+      "override_score": 92,
+      "reason": "Possible bacterial meningitis or encephalitis"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+case_id,symptom_text,language,expected_symptoms,expected_tier,expected_red_flag,expected_recommendation,clinical_notes
+L01,"mild runny nose and sneezing for 1 day",en,"runny_nose",low,False,self_care,Common cold - minimal symptoms
+L02,"thoda sa sir dard hai aaj subah se",hi,"headache",low,False,self_care,Mild headache - Hindi input
+L03,"slight itching on arms since yesterday",en,"itching",low,False,self_care,Minor dermatological complaint
+L04,"occasional mild cough for 2 days",en,"cough",low,False,self_care,Mild cough - self-limiting
+L05,"mukku lo koncham noppi undhi",te,"nasal_congestion",low,False,self_care,Mild nasal discomfort - Telugu input
+L06,"mild body ache after working in the field",en,"body_aches",low,False,self_care,Exertional body aches
+L07,"thoda gas ban raha hai pet mein",hi,"bloating",low,False,self_care,Mild bloating - Hindi
+L08,"ear mein halka sa dard hai",hi,"ear_pain",low,False,self_care,Mild ear pain - Hindi
+L09,"mild mouth ulcers for 2 days",en,"mouth_ulcers",low,False,self_care,Minor oral complaint
+L10,"eyes mein thodi khujli hai",hi,"itchy_eyes",low,False,self_care,Mild eye itching - Hindi
+M01,"fever with moderate cough for 3 days",en,"fever;cough",moderate,False,teleconsultation,Moderate respiratory infection
+M02,"bukhar aur gale mein dard 4 din se",hi,"fever;sore_throat",moderate,False,teleconsultation,Fever + sore throat - Hindi
+M03,"moderate headache with nausea and chills for 2 days",en,"headache;nausea;chills",moderate,False,teleconsultation,Headache with systemic involvement
+M04,"joint pain and swelling in both knees 5 days",en,"joint_pain;swollen_joints",moderate,False,teleconsultation,Bilateral joint involvement
+M05,"pet mein dard aur loose motion 3 din se",hi,"abdominal_pain;diarrhea",moderate,False,teleconsultation,GI symptoms - Hindi
+M06,"kadupu noppi mariyu vantulu 2 rojulu nundi",te,"abdominal_pain;vomiting",moderate,False,teleconsultation,Abdominal pain + vomiting - Telugu
+M07,"moderate back pain with numbness in legs for a week",en,"back_pain;numbness",moderate,False,teleconsultation,Back pain with neurological sign
+M08,"painful urination and lower abdominal pain 4 days",en,"painful_urination;pelvic_pain",moderate,False,teleconsultation,Possible UTI
+M09,"peshab mein jalan aur bukhar 3 din se",hi,"painful_urination;fever",moderate,False,teleconsultation,UTI with fever - Hindi
+M10,"rash on body with itching and mild fever 5 days",en,"rash;itching;fever",moderate,False,teleconsultation,Febrile rash - possible viral
+M11,"kaan se paani aa raha hai aur dard bhi hai aur bukhar bhi",hi,"ear_discharge;ear_pain;fever",moderate,False,teleconsultation,Ear discharge with fever - Hindi
+M12,"moderate wheezing with cough for 4 days",en,"wheezing;cough",moderate,False,teleconsultation,Possible asthma exacerbation
+M13,"naak se khoon aata hai kabhi kabhi aur sir dard",hi,"nosebleed;headache",moderate,False,teleconsultation,Epistaxis + headache - Hindi
+M14,"wound on leg not healing for 10 days with swelling",en,"wound_not_healing;swelling",moderate,False,teleconsultation,Non-healing wound
+M15,"constipation 7 din se aur pet phool raha hai aur pet dard",hi,"constipation;bloating;abdominal_pain",moderate,False,teleconsultation,Chronic constipation with pain - Hindi
+H01,"high fever with severe cough and rapid breathing 5 days",en,"fever;cough;rapid_breathing",critical,False,emergency,Possible pneumonia - 3 high-weight symptoms push to critical with chronic duration
+H02,"tez bukhar stiff neck aur sir dard 2 din se",hi,"fever;stiff_neck;headache",critical,True,emergency,Possible meningitis - Hindi (red flag combo in KG)
+H03,"severe abdominal pain with vomiting and blood in stool",en,"abdominal_pain;vomiting;blood_in_stool",critical,True,emergency,GI hemorrhage red flag
+H04,"jaundice with fever and stomach pain for 3 days",en,"jaundice;fever;abdominal_pain",critical,True,emergency,Possible hepatitis - KG red flag
+H05,"diabetic patient with severe headache and dizziness",en,"headache;dizziness",high,False,hospital_visit,Hypertensive emergency with diabetes comorbidity
+H06,"jwaram veyyi mariyu voupu chhati lo 5 rojulu nundi",te,"fever;chest_tightness",high,False,hospital_visit,Fever + chest tightness - Telugu
+H07,"bahut tez kamar dard pair mein kamzori aur sunn pad raha hai",hi,"back_pain;leg_weakness;numbness",high,False,hospital_visit,Possible cauda equina - Hindi
+H08,"severe pelvic pain with vaginal bleeding since yesterday",en,"pelvic_pain;vaginal_bleeding",high,False,hospital_visit,Pelvic pain with vaginal bleeding
+H09,"breast mein gaanth hai aur dard aur sujan aur theek nahi ho raha",hi,"breast_lump;swelling;wound_not_healing",high,False,hospital_visit,Breast lump with complications - Hindi
+H10,"severe cough with blood and weight loss and fever",en,"blood_in_sputum;weight_loss;fever",critical,False,emergency,Possible TB - 3 high-weight symptoms with chronic duration correctly score critical
+H11,"severe boils with fever and swelling on face",en,"boils_abscess;fever;swollen_face",high,False,hospital_visit,Facial abscess with systemic infection
+H12,"moderate seizure and confusion with fever in child",en,"seizure;confusion;fever",critical,True,emergency,Febrile seizure in child - seizure triggers critical override
+H13,"hearing loss with vertigo and vomiting for 3 days",en,"hearing_loss;vertigo;vomiting",high,False,hospital_visit,Possible Meniere's or vestibular
+H14,"pregnancy mein BP bahut badh gaya hai aur sir dard hai",hi,"pregnancy_complications;high_blood_pressure_symptoms;headache",critical,True,emergency,Possible pre-eclampsia - Hindi - KG red flag combo
+H15,"black tarry stools with dizziness for 2 days",en,"black_tarry_stools;dizziness",high,False,hospital_visit,Upper GI bleed - partial match (need 3 for KG red flag)
+C01,"severe chest pain with shortness of breath and sweating",en,"chest_pain;shortness_of_breath",critical,True,emergency,Acute coronary syndrome - critical override
+C02,"achanak se haath pair chal nahi rahe aur bolne mein dikkat",hi,"sudden_paralysis;slurred_speech",critical,True,emergency,Acute stroke - Hindi - critical override
+C03,"patient is unconscious and not responding",en,"loss_of_consciousness",critical,True,emergency,Unresponsive patient - critical override
+C04,"hathaattu paksha vaatam mariyu mukhamu vaalipotundi",te,"sudden_paralysis;facial_drooping",critical,True,emergency,Stroke symptoms - Telugu - critical override
+C05,"mirgi ke daure aa rahe hain aur hosh nahi hai",hi,"seizure;loss_of_consciousness",critical,True,emergency,Status epilepticus - Hindi - critical override
+C06,"child age 3 severe difficulty breathing and lips turning blue",en,"shortness_of_breath;cyanosis",critical,True,emergency,Pediatric respiratory failure - KG red flag combo
+C07,"suspected rat poison ingestion 2 hours ago",en,"suspected_poisoning",critical,True,emergency,Poisoning - critical override
+C08,"uncontrolled bleeding from wound not stopping for 1 hour",en,"uncontrolled_bleeding",critical,True,emergency,Hemorrhage - critical override
+C09,"seene mein bahut tez dard aur saans nahi aa rahi",hi,"chest_pain;shortness_of_breath",critical,True,emergency,Classic MI with SOB - Hindi - critical override
+C10,"sudden complete vision loss in both eyes with severe headache",en,"sudden_vision_loss;headache",critical,True,emergency,Possible stroke or retinal emergency
